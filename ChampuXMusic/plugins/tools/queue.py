@@ -8,7 +8,7 @@ from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 import config
 from ChampuXMusic import app
 from ChampuXMusic.misc import db
-from ChampuXMusic.utils import AnonyBin, get_channeplayCB, seconds_to_min
+from ChampuXMusic.utils import ChampuBin, get_channeplayCB, seconds_to_min
 from ChampuXMusic.utils.database import get_cmode, is_active_chat, is_music_playing
 from ChampuXMusic.utils.decorators.language import language, languageCB
 from ChampuXMusic.utils.inline import queue_back_markup, queue_markup
@@ -176,7 +176,7 @@ async def queued_tracks(client, CallbackQuery: CallbackQuery, _):
             return await CallbackQuery.edit_message_text(msg, reply_markup=buttons)
         if "✨" in msg:
             msg = msg.replace("✨", "")
-        link = await AnonyBin(msg)
+        link = await ChampuBin(msg)
         med = InputMediaPhoto(media=link, caption=_["queue_3"].format(link))
         await CallbackQuery.edit_message_media(media=med, reply_markup=buttons)
     else:
